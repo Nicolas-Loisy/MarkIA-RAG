@@ -1,18 +1,13 @@
-import os
 from flask import Flask
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from flask_talisman import Talisman
 from flask_cors import CORS
 from dotenv import load_dotenv
+from utils.limiter import init_limiter
 
 app = Flask(__name__)
 
 # Load environment variables from a .env file if it exists
 load_dotenv()
-
-# Limitation par adresse IP
-limiter = Limiter(get_remote_address, app=app, default_limits=["200 per day", "50 per hour"])
 
 # Configuration des en-têtes de sécurité
 csp = {
@@ -39,6 +34,10 @@ origins = [
 ]
 CORS(app, resources={r"/api/*": {"origins": origins}}, methods=["GET", "POST"], supports_credentials=True)
 
+# Initialize limiter
+init_limiter(app)
+
+# Import and register blueprints at the end to avoid circular imports
 from routes import api_bp
 
 app.register_blueprint(api_bp, url_prefix='/api')

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from werkzeug.exceptions import BadRequest
-from app import limiter
+from utils.limiter import limiter
 from utils.security import require_api_key
 
 echo_bp = Blueprint('echo', __name__)
