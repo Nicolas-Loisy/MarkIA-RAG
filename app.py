@@ -1,9 +1,8 @@
-from flask import Flask, jsonify, request
+from flask import Flask
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_talisman import Talisman
 from flask_cors import CORS
-from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
 
@@ -35,25 +34,9 @@ origins = [
 ]
 CORS(app, resources={r"/api/*": {"origins": origins}}, methods=["GET", "POST"], supports_credentials=True)
 
-@app.before_request
-def block_non_json():
-    if request.accept_mimetypes['text/html'] > request.accept_mimetypes['application/json']:
-        raise BadRequest("Only JSON responses are supported")
+from routes import api_bp
 
-# Exemple d'endpoint
-@app.route('/api', methods=['GET'])
-@limiter.limit("10 per minute")
-def hello_world():
-    return jsonify({'message': 'Hello, Firebase!'})
-
-# Endpoint avec un paramètre
-@app.route('/api/echo', methods=['POST'])
-@limiter.limit("10 per minute")
-def echo():
-    if not request.is_json:
-        raise BadRequest("Invalid content type. JSON required.")
-    data = request.json
-    return jsonify({'you_sent': data})
+app.register_blueprint(api_bp, url_prefix='/api')
 
 if __name__ == '__main__':
     # Utiliser HTTPS en production
