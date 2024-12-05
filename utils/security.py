@@ -1,8 +1,11 @@
 import os
 from flask import request, jsonify
 from functools import wraps
+from .config import Config
 
-API_KEYS = set(os.getenv("MARIKIA_API_KEYS", "").split(","))
+config = Config()
+
+API_KEYS = config.get_env_var_list("MARIKIA_API_KEYS")
 
 def require_api_key(f):
     @wraps(f)
