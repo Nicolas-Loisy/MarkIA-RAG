@@ -1,10 +1,15 @@
+import os
 from flask import Flask
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_talisman import Talisman
 from flask_cors import CORS
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+
+# Load environment variables from a .env file if it exists
+load_dotenv()
 
 # Limitation par adresse IP
 limiter = Limiter(get_remote_address, app=app, default_limits=["200 per day", "50 per hour"])

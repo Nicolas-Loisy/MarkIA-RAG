@@ -1,8 +1,8 @@
-
+import os
 from flask import request, jsonify
 from functools import wraps
 
-API_KEYS = {"your_api_key_here"}
+API_KEYS = set(os.getenv("API_KEYS", "").split(","))
 
 def require_api_key(f):
     @wraps(f)
