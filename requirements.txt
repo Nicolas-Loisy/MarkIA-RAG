@@ -18,3 +18,4 @@ flask_talisman==1.1.0
 # eurelis-llmatoolkit @ git+https://github.com/Eurelis/Eurelis-LlmaToolkit@spike/llamaindex#eurelis-llmatoolkit[huggingface,mongodb,anthropic,llamaindex,chatbot,markdown]
 eurelis-llmatoolkit @ git+https://github.com/Eurelis/Eurelis-LlmaToolkit@spike/llamaindex#eurelis-llmatoolkit[huggingface,mongodb,llamaindex,chatbot,markdown]
 anthropic==0.40.0
+llama-index-llms-anthropic==0.4.1
