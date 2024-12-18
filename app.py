@@ -1,13 +1,11 @@
 from flask import Flask
 from flask_talisman import Talisman
 from flask_cors import CORS
-from dotenv import load_dotenv
 from utils.limiter import init_limiter
+from utils.config import Config
 
+config = Config()
 app = Flask(__name__)
-
-# Load environment variables from a .env file if it exists
-load_dotenv()
 
 # Configuration des en-têtes de sécurité
 csp = {
