@@ -25,6 +25,7 @@ Talisman(
 
 # Configuration des origines autorisées
 origins = [
+    "http://localhost:3000",
     "https://markia.fr",
     "https://markia.nicolasloisy.fr",
     "https://nicolasloisy.fr",

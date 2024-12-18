@@ -5,7 +5,7 @@ from .config import Config
 
 config = Config()
 
-API_KEYS = config.get_env_var_list("MARIKIA_API_KEYS")
+API_KEYS = config.get_env_var_list("MARKIA_API_KEYS")
 
 def require_api_key(f):
     @wraps(f)
