@@ -28,7 +28,11 @@ origins = [
     "https://markia.fr",
     "https://markia.nicolasloisy.fr",
     "https://nicolasloisy.fr",
-    "https://portfolio.nicolasloisy.fr"
+    "https://portfolio.nicolasloisy.fr",
+    "https://www.markia.fr",
+    "https://www.markia.nicolasloisy.fr",
+    "https://www.nicolasloisy.fr",
+    "https://www.portfolio.nicolasloisy.fr"
 ]
 CORS(app, resources={r"/api/*": {"origins": origins}}, methods=["GET", "POST"], supports_credentials=True)
 
