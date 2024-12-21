@@ -23,6 +23,6 @@ def chatbot():
     
     # Retourne le message de l'utilisateur dans une réponse JSON
     response = {
-        "text": f"Je serais bientôt intelligent ! Vous avez dit : {user_message}"
+        "text": f"Je serai bientôt intelligent ! Vous avez dit : {user_message}"
     }
     return jsonify(response)
