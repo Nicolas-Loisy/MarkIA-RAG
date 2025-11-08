@@ -15,7 +15,4 @@ flask_limiter[mongodb]==3.9.2
 flask_talisman==1.1.0
 
 # Custom packages
-# eurelis-llmatoolkit @ git+https://github.com/Eurelis/Eurelis-LlmaToolkit@spike/llamaindex#eurelis-llmatoolkit[huggingface,mongodb,anthropic,llamaindex,chatbot,markdown]
-eurelis-llmatoolkit @ git+https://github.com/Eurelis/Eurelis-LlmaToolkit@spike/llamaindex#eurelis-llmatoolkit[huggingface,mongodb,llamaindex,chatbot,markdown]
-anthropic==0.40.0
-llama-index-llms-anthropic==0.4.1
+eurelis-llmatoolkit[mongodb,llamaindex,chatbot,markdown,pdf,openai]
