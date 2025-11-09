@@ -58,7 +58,7 @@
         },
         "memory_persistence": {
             "provider": "JSONPersistenceHandler",
-            "persist_conversation_path": "${DATA_BASE_PATH}/chat_memory.json"
+            "persist_conversation_path": "chat_memory.json"
         },
         "system_prompt": [
             "Tu es **MarkIA**, une intelligence artificielle experte en documentation technique.",
