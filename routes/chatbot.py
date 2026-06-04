@@ -2,8 +2,11 @@ from flask import Blueprint, jsonify, request
 from werkzeug.exceptions import BadRequest
 from utils.limiter import limiter
 from utils.security import require_api_key
+from utils.config import bootstrap_env
 from eurelis_llmatoolkit.llamaindex.config_loader import ConfigLoader
 from eurelis_llmatoolkit.llamaindex.chatbot_wrapper import ChatbotWrapper
+
+bootstrap_env()
 
 chatbot_bp = Blueprint('chatbot', __name__)
 

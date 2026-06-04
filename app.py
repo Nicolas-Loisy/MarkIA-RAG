@@ -2,7 +2,9 @@ from flask import Flask
 from flask_talisman import Talisman
 from flask_cors import CORS
 from utils.limiter import init_limiter
-from utils.config import Config
+from utils.config import Config, bootstrap_env
+
+bootstrap_env()
 
 config = Config()
 app = Flask(__name__)

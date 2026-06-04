@@ -1,6 +1,15 @@
 import os
 from dotenv import load_dotenv
 
+
+def bootstrap_env():
+    load_dotenv()
+    mongo_uri = os.getenv("MONGODB_URI") or os.getenv("MONGO_CONNECTION_STRING")
+    if mongo_uri and not os.getenv("MONGODB_URI"):
+        os.environ["MONGODB_URI"] = mongo_uri
+    if mongo_uri and not os.getenv("MONGO_CONNECTION_STRING"):
+        os.environ["MONGO_CONNECTION_STRING"] = mongo_uri
+
 class Config:
     _instance = None
 
@@ -12,7 +21,7 @@ class Config:
 
     @classmethod
     def _load_env(cls):
-        load_dotenv()
+        bootstrap_env()
 
     def get_env_var(self, var_name, default_value=None):
         value = os.getenv(var_name)
@@ -28,6 +37,8 @@ class Config:
         return set(value.split(","))
 
     def get_storage_uri(self):
-        mongo_connection_string = self.get_env_var("MONGO_CONNECTION_STRING")
+        mongo_connection_string = self.get_env_var(
+            "MONGODB_URI", self.get_env_var("MONGO_CONNECTION_STRING")
+        )
         mongo_db_name = self.get_env_var("MONGO_DB_NAME")
         return f"{mongo_connection_string}/{mongo_db_name}"
